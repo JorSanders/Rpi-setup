@@ -18,7 +18,8 @@ services:
       - EXTRA_DOMAINS= #optional
       - STAGING=false #optional
     volumes:
-      - /path/to/appdata/config:/config
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/servers:/etc/nginx/servers
     ports:
       - 443:443
       - 80:80
