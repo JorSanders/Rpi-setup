@@ -1,0 +1,29 @@
+---
+version: "2.1"
+services:
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Amsterdam
+      - URL=jor.dev
+      - VALIDATION=http
+      - SUBDOMAINS=www, #optional
+      - EMAIL= it@jor.dev
+      - ONLY_SUBDOMAINS=false
+      - EXTRA_DOMAINS= #optional
+      - STAGING=false #optional
+    volumes:
+      - /path/to/appdata/config:/config
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+  resume:
+    image: ghcr.io/jorsanders/resume:latest
+    container_name: resume
+    restart: unless-stopped
