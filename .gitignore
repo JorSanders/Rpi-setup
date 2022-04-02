@@ -1,5 +1,4 @@
 .vscode
 config/log
-config/*
 !/config/nginx/site-confs/default
 !/config/www

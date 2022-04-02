@@ -1,0 +1,22 @@
+error_page 502 /502.html;
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    return 301 https://$host$request_uri;
+}
+
+server {
+   listen 443 ssl http2 default_server;
+   listen [::]:443 ssl http2 default_server;
+
+   server_name jor.dev www.jor.dev resume.jor.dev;
+
+   include /config/nginx/ssl.conf;
+
+   location / {
+       include /config/nginx/proxy.conf;
+       proxy_pass http://resume:8080;
+   }
+}
