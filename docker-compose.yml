@@ -1,5 +1,6 @@
 ---
-version: "2.1"
+version: "2.8"
+
 services:
   swag:
     image: lscr.io/linuxserver/swag
@@ -25,7 +26,25 @@ services:
       - 443:443
       - 80:80
     restart: unless-stopped
+    networks:
+      - resume
+
   resume:
     image: ghcr.io/jorsanders/resume:latest
     container_name: resume
     restart: unless-stopped
+    networks:
+      - resume
+
+  discord_cage_bot:
+    image: ghcr.io/jorsanders/discord_cage_bot:latest
+    container_name: discord_cage_bot
+    environment:
+      - CAGE_BOT_TOKEN
+    restart: unless-stopped
+    networks:
+      - discord_cage_bot
+
+networks:
+  resume: {}
+  discord_cage_bot: {}
