@@ -45,6 +45,18 @@ services:
     networks:
       - discord_cage_bot
 
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - ./minecraft-data:/data
+
 networks:
   resume: {}
   discord_cage_bot: {}
