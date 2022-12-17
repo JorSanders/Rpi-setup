@@ -3,4 +3,3 @@ config/log
 !/config/nginx/site-confs/default
 !/config/www
 minecraft-data
-config/www/index.html

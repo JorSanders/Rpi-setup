@@ -20,8 +20,8 @@ services:
       - STAGING=false #optional
     volumes:
       - ./config/log:/config/log
-      - ./config/nginx/site-confs/default:/config/nginx/site-confs/default
-      - ./config/www:/config/www
+      - ./config/nginx/site-confs/default.conf:/config/nginx/site-confs/default.conf
+      - ./config/www/502.html:/config/www/502.html
     ports:
       - 443:443
       - 80:80
