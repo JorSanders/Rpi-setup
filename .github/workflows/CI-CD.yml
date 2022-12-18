@@ -25,7 +25,7 @@ jobs:
           echo "===== Adding key to agent"
           ssh-add ~/.ssh/ec2_deploy.key
           echo "(Re-)starting Resume"
-          ssh "$ENVIRONMENT_USER@$ENVIRONMENT_HOST" 'cd $HOME/Projects/Rpi-setup && git pull && docker compose pull && docker compose up -d'
+          ssh "$ENVIRONMENT_USER@$ENVIRONMENT_HOST" 'source ~/.bash_profile && cd ~/Projects/Rpi-setup && git pull && docker compose pull && docker compose up -d'
         shell: bash
         env:
           ENVIRONMENT_HOST: ${{secrets.ENVIRONMENT_HOST}}
